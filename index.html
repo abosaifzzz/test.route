@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Fair</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/6d60548e6f.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container  py-5 d-flex flex-column align-items-center">
+        <h1 class="text-white">Welcome to our Bank </h1>
+
+        <div class="container mt-5 pb-5 pt-5 d-flex flex-column align-items-center justify-content-center">
+            <div class="search d-flex justify-content-center">
+
+                <span class="dropdown">
+                    <button class="dropbtn">Filter by <i class="fa-solid fa-chevron-down"></i></button>
+                    <div class="dropdown-content">
+                        <a id="search-name" href="#">Customer Name</a>
+                        <a id="filter-transaction" href="#">Transction Amount</a>
+                    </div>
+                </span>
+                <input id="name-search" type="text" placeholder="Search by name">
+                <input id="transaction" class="d-none" type="text" placeholder="Search by transaction amount">
+
+
+
+
+            </div>
+
+            <div class="table-customer py-5">
+                <div id="head" class="head ">
+                    <!-- <ul class="list-unstyled pb-0 mb-0 d-flex justify-content-around">
+                        <li class="head-name w-100 ">Customer </li>
+                        <li class="head-date w-100 ">Transaction Date</li>
+                        <li class="head-amount w-100 ">Transaction Amount</li>
+                    </ul>
+                    <ul class="id-1-1 list-unstyled pb-0 mb-0 d-flex justify-content-around">
+                        <li class=" content-name w-100 ">Mohamed Abo Saif</li>
+                        <li class="content-date w-100 ">12/06/2024</li>
+                        <li class="content-amount w-100 ">12000</li>
+
+
+                    </ul>
+                    <ul id="id-1-2" class=" d-none  list-unstyled pb-0 mb-0 d-flex justify-content-around">
+                        <li class="  w-100 "></li>
+                        <li class="content-date w-100 ">12/06/2024</li>
+                        <li class="content-amount w-100 ">12000</li>
+
+
+                    </ul> -->
+
+
+
+                </div>
+
+
+
+            </div>
+
+
+            <div id="chartCard" class="card w-75 p-2  ">
+
+                <canvas id="myChart"></canvas>
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="index.js"></script>
+</body>
+
+</html>

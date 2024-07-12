@@ -1,0 +1,8 @@
+
+:root{
+    --main-color:#4726e1;
+}
+
+.text-main{
+    color: var(--main-color);
+}
