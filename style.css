@@ -68,6 +68,7 @@ width: 100%;
 
   .head{
     background-color: rgb(47, 96, 120);
+    border-radius: 10px;
 
   }
   .table-customer{
@@ -78,14 +79,17 @@ width: 100%;
   }
   .head-name{
     color: white;
-    background-color: rgb(67, 67, 67);
+    border-top-left-radius: 10px;
+    background-color: rgb(19, 62, 82);
   }
   .head-date{
-    background-color: #bdbdbd;
-
+    color: white;
+    background-color: rgb(19, 62, 82);
   }
   .head-amount{
-    background-color: #e7e4e4;
+    color: white;
+    background-color: rgb(19, 62, 82);
+    border-top-right-radius: 10px;
 
   }
   .content-name{ 
@@ -103,10 +107,18 @@ width: 100%;
     background-color: rgb(129, 207, 255);
   }
 
-  #chartCard{
-    color: rgb(255, 255, 255);
 
-background-color: #72b7e2;
+.chartCard{
+    color: rgb(255, 255, 255);
+    position: relative;
+    background-color: rgba(130, 193, 255, 0.596);
+/* background-color: rgba(254, 0, 0, 0.323); */
+
+  }
+  .chartCard2{
+    color: rgb(255, 255, 255);
+    position: relative;
+    background-color: rgba(130, 193, 255, 0.842);
 /* background-color: rgba(254, 0, 0, 0.323); */
 
   }

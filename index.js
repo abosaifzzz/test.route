@@ -18,8 +18,11 @@ document.getElementById("name-search").addEventListener("input", function () {
   console.log(nameSearch.value);
 
   if (nameSearch.value == "") {
-    displayUsers(data.customers, customerHistory);
+    displayUsers(data.customers);
+    document.querySelector(".content-name").style.backgroundColor = "red";
+
     displayChart(customerHistory);
+    displayChart2(customerHistory);
   }
   if (nameSearch.value !== "") {
     let nameSearchId;
@@ -29,8 +32,17 @@ document.getElementById("name-search").addEventListener("input", function () {
     let customerHistory = data.transactions.filter(
       (e) => e.customer_id == nameSearchId[0]?.id
     );
+    // document.querySelector(".content-name").style.backgroundColor = "red";
     displayUsers(data.customers, customerHistory);
     displayChart(customerHistory);
+    displayChart2(customerHistory);
+  }
+  if (nameSearch.value == "") {
+    // document.querySelector(".content-name").style.backgroundColor = "red";
+
+    displayUsers(data.customers);
+    displayChart(customerHistory);
+    displayChart2(customerHistory);
   }
 });
 
@@ -42,6 +54,8 @@ document.getElementById("transaction").addEventListener("input", function () {
     });
     displayUsers(data.customers, amountId);
     displayChart(amountId);
+    displayChart2(amountId);
+
     console.log(amountId);
   }
 });
@@ -52,13 +66,14 @@ async function getData() {
   apiResponse = data;
   displayUsers(data.customers, data.transactions);
   displayChart(data.transactions);
+  displayChart2(data.transactions);
 }
 getData();
 //getData();
 
 function displayUsers(customers, transactions) {
   let userData = "";
-  let head = `<ul class="list-unstyled pb-0 mb-0 d-flex justify-content-around">
+  let head = `<ul id="result" class="list-unstyled pb-0 mb-0 d-flex justify-content-around">
                   <li class="head-name w-100 ">Customer</li>
                   <li class="head-date w-100 ">Transaction Date</li>
                   <li class="head-amount w-100 ">Transaction Amount</li>
@@ -123,6 +138,54 @@ function displayChart(transactions = []) {
       ],
     },
     options: {
+      responsive: true,
+      tooltips: {
+        mode: "index",
+      },
+    },
+  });
+}
+/////////////////////////////////////////
+let currentChart2;
+
+function displayChart2(transactions = []) {
+  const ctx = document.getElementById("myChart2");
+  const dateAmountMap = {};
+
+  transactions.forEach((transaction) => {
+    const date = transaction.date;
+    const amount = transaction.amount;
+    if (dateAmountMap[date]) {
+      dateAmountMap[date] += amount;
+    } else {
+      dateAmountMap[date] = amount;
+    }
+  });
+
+  const dates = Object.keys(dateAmountMap);
+  const amounts = Object.values(dateAmountMap);
+
+  if (currentChart2) {
+    currentChart2.destroy();
+  }
+
+  currentChart2 = new Chart(ctx, {
+    type: "radar",
+    data: {
+      labels: dates || [],
+      datasets: [
+        {
+          label: "Transactions",
+          backgroundColor: "rgb(255, 255, 500)",
+          data: amounts || [],
+          color: "rgb(255, 255, 255)",
+          borderWidth: 5,
+          borderColor: "rgba(254, 0, 0, 0.500)",
+        },
+      ],
+    },
+    options: {
+      responsive: true,
       tooltips: {
         mode: "index",
       },
